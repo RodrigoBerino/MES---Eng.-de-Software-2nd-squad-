@@ -1,1 +1,1 @@
-# MES---Eng.-de-Software-2nd-squad-
+Projeto de Manutenção e Evolução de Software. Turma 5. Equipe 2.
