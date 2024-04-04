@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Inter Sans', sans-serif;
+}
+
+.main-login{
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login{
+    padding-left: 80px ;
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-login > h1{
+    color: #13132b;
+    font-size: 3vw;
+}
+
+.right-login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login{
+    width: 60%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 10px 80px #a5a5d3;
+}
+
+.card-login > h1{
+    color: #00ff88;
+    font-weight: 800;
+    margin: 0;
+}
+
+.card-login > p{
+    color: #13132b;
+    font-weight: 600;
+    margin: 0;
+}
+
+.text-field{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px 0px;
+}
+
+.text-field > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    color: fff;
+    background: #a5a5d3;
+    font-size: 12pt;
+    box-shadow: 0px 4px 20px #a5a5d3;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.text-field > label{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.text-field > input::placeholder{
+    color: #fff;
+}
+
+.btn-login{
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: none;
+    color: #201b2c;
+    background: #00ff88;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #366c53;
+}
+
+.img{
+    width: 35vw;
+}
+
