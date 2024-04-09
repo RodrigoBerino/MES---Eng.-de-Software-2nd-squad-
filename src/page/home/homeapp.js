@@ -3,7 +3,7 @@ import './estiloHome.css';
 import ifamlogo from "../../img/ifam-logo.png";
 import Header from '../../components/header';
 import BreadCrumb from '../../components/breadCrumb';
-import Form from '../../components/form/form';
+import Cadastro from '../tablecadastro';
 
 function HomeApp() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -113,7 +113,7 @@ function HomeApp() {
                 </div>
                 <div>
                     <div>
-                        <Form/>
+                        <Cadastro/>
                     </div>
                 </div>
             </section>

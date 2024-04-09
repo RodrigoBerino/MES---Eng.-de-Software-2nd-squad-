@@ -1,41 +1,125 @@
-import React from 'react';
-import './estilo.css'; // Import your CSS file
+import axios from "axios";
+import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+import { toast } from "react-toastify";
 
+const FormContainer = styled.form`
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 5px;
+`;
 
-function RegistrationForm() {
-    return (
-    <div className="container">
-      <header>Cadastrar novo Usuário</header>
-        <form action="#">
-          <div className="form first">
-            <div className="details personal">
-              <div className="fields">
-                <div className="input-field">
-                  <label>Full Name</label>
-                  <input type="text" placeholder="Enter your name" required />
-                </div>
-              </div>
-           </div>
+const InputArea = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-        <div className="details ID">
+const Input = styled.input`
+  width: 120px;
+  padding: 0 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 40px;
+`;
 
-                                <div className="fields">
-                                    <div className="input-field">
-                                        <label>ID Type</label>
-                                        <input type="text" placeholder="Enter ID type" required />
-                                    </div>
-                                    {/* other input fields */}
-                                </div>
+const Label = styled.label``;
 
-                                <button className="nextBtn">
-                                    <span className="btnText">Next</span>
-                                    <i className="uil uil-navigator"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-    );
-}
+const Button = styled.button`
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #2c73d2;
+  color: white;
+  height: 42px;
+`;
 
-export default RegistrationForm;
+const Form = ({ getUsers, onEdit, setOnEdit }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    if (onEdit) {
+      const user = ref.current;
+
+      user.nome.value = onEdit.nome;
+      user.email.value = onEdit.email;
+      user.senha.value = onEdit.senha;
+      user.data_nascimento.value = onEdit.data_nascimento;
+    }
+  }, [onEdit]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const user = ref.current;
+
+    if (
+      !user.nome.value ||
+      !user.email.value ||
+      !user.senha.value ||
+      !user.data_nascimento.value
+    ) {
+      return toast.warn("Preencha todos os campos!");
+    }
+
+    if (onEdit) {
+      await axios
+        .put("http://localhost:8800/" + onEdit.id, {
+          nome: user.nome.value,
+          email: user.email.value,
+          senha: user.senha.value,
+          data_nascimento: user.data_nascimento.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
+    } else {
+      await axios
+        .post("http://localhost:8800", {
+          nome: user.nome.value,
+          email: user.email.value,
+          senha: user.senha.value,
+          data_nascimento: user.data_nascimento.value,
+        })
+        .then(({ data }) => toast.success(data))
+        .catch(({ data }) => toast.error(data));
+    }
+
+    user.nome.value = "";
+    user.email.value = "";
+    user.senha.value = "";
+    user.data_nascimento.value = "";
+
+    setOnEdit(null);
+    getUsers();
+  };
+
+  return (
+    <FormContainer ref={ref} onSubmit={handleSubmit}>
+      <InputArea>
+        <Label>Nome</Label>
+        <Input name="nome" />
+      </InputArea>
+      <InputArea>
+        <Label>E-mail</Label>
+        <Input name="email" type="email" />
+      </InputArea>
+      <InputArea>
+        <Label>Senha</Label>
+        <Input name="senha" />
+      </InputArea>
+      <InputArea>
+        <Label>Data de Nascimento</Label>
+        <Input name="data_nascimento" type="date" />
+      </InputArea>
+
+      <Button type="submit">SALVAR</Button>
+    </FormContainer>
+  );
+};
+
+export default Form;
