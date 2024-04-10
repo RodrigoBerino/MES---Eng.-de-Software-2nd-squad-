@@ -11,15 +11,25 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin-top: 20px;
+  width: 100wh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: left;
+  background-color: #fff;
+  padding:32px;
+  gap: 32px;
+  border-radius: 6px;
 `
-const Title = styled.h2``;
+const Title = styled.h2`
+  color: #242526;
+  font-weight: 600;
+  width: 100wh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 16px;
+`;
 
 function Cadastro() {
   const [users, setUsers] = useState ([]);
@@ -42,8 +52,8 @@ function Cadastro() {
   return (
     //<HomeApp/>
     <>
-    <Container>
-      <Title>USUÁRIOS</Title>
+    <Container>  
+      <Title> <i className='bx bx-user icon'></i> Cadastrar novo Usuário</Title>
       <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
       <Grid setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
     </Container>

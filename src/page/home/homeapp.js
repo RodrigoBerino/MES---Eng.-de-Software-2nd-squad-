@@ -111,10 +111,8 @@ function HomeApp() {
                 <div>
                     <BreadCrumb/>
                 </div>
-                <div>
-                    <div>
-                        <Cadastro/>
-                    </div>
+                <div className='tableCadastro'>
+                    <Cadastro/>
                 </div>
             </section>
         </div>

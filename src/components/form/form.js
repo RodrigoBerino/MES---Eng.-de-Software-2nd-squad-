@@ -4,14 +4,16 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 
 const FormContainer = styled.form`
+  width: 100%;
   display: flex;
   align-items: flex-end;
   gap: 10px;
   flex-wrap: wrap;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 5px;
+  box-shadow: 0px 0px 3px #ccc;
+  border-radius: 8px;
+  justify-content:space-around;
 `;
 
 const InputArea = styled.div`
@@ -20,23 +22,27 @@ const InputArea = styled.div`
 `;
 
 const Input = styled.input`
-  width: 120px;
+  width: 100%;
   padding: 0 10px;
   border: 1px solid #bbb;
   border-radius: 5px;
+  border-color: #CCC;
+  color: #696969;
   height: 40px;
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+  color: #242526;
+`;
 
 const Button = styled.button`
-  padding: 10px;
+  padding: 10px 24px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  background-color: #2c73d2;
-  color: white;
-  height: 42px;
+  background-color: #2c9c3c;
+  color: #FFF;
+  height: 40px;
 `;
 
 const Form = ({ getUsers, onEdit, setOnEdit }) => {
@@ -113,11 +119,11 @@ const Form = ({ getUsers, onEdit, setOnEdit }) => {
         <Input name="senha" />
       </InputArea>
       <InputArea>
-        <Label>Data de Nascimento</Label>
+        <Label>Nascimento</Label>
         <Input name="data_nascimento" type="date" />
       </InputArea>
 
-      <Button type="submit">SALVAR</Button>
+      <Button type="submit"> <i className='bx bx-plus icon'></i> Cadastrar</Button>
     </FormContainer>
   );
 };

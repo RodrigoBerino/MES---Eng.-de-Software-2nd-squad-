@@ -297,7 +297,7 @@ body.dark .switch::before{
     left: 250px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color: var(--body-color);
+    background-color: #eaeaea;
     transition: var(--tran-05);
 }
 .home .text{
@@ -323,4 +323,12 @@ body.dark .home .text{
     display: flex;
     box-sizing: border-box;
     position: absolute;
+}
+
+.tableCadastro{
+    display:flexbox;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 52px;
+    border-radius: 16px;
 }
